@@ -16,7 +16,7 @@ baseurl:          /
 paginate:         5
 
 # Custom vars
-version:          ff02::2
+version:          9001
 
 github:
   repo:           https://github.com/Dioberne/dioberne.github.io
