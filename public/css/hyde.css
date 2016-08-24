@@ -34,6 +34,11 @@
 html {
   font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
 }
+
+h1 {
+  color: #00AEFF;
+}
+
 @media (min-width: 48em) {
   html {
     font-size: 16px;
