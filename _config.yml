@@ -8,7 +8,7 @@ permalink:        pretty
 # Setup
 title:            Interblag
 tagline:          'Ride the Walrus!'
-description:      'A blog about Security, Free Software, and General Geekiness'
+description:      'A personal blog on the topics of Security, Free Software, and General Geekiness'
 url:              https://dioberne.github.io/
 baseurl:          /
 
