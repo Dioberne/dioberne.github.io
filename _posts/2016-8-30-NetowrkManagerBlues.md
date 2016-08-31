@@ -5,15 +5,17 @@ title: Network Manager Blues
 
 Who needs network connectivity? Not me according to the network-manager service used by Ubuntu. 
 
-I was chatting with friends when suddenly the popup appeared saying “You have been disconnected”. 30 seconds later it appeared again, and again, and again. Needless to say I was non too happy with this arrangement. I checked the logs to see what was up. 
+I was chatting with friends when suddenly the popup appeared saying “You have been disconnected”. 30 seconds later it appeared again, and again, and again. Needless to say I was none too happy with this arrangement so I checked the logs to see what was up:
 
 {% highlight bash %}
 cat /var/log/* | grep -a enp0s42e3
 {% endhighlight %}
 
-This hinted at it being an issue with network manager and dhcp so I set a static IP address in network manager then restarted the service using”
+This hinted at it being an issue with network manager and dhcp so I set a static IP address in network manager then restarted the service using:
 
+{% highlight bash %}
 sudo service network-manager restart
+{% endhighlight %}
 
 This did nothing so I rebooted. Low and behold I had an IP address again! Aaaand then I didn't. Fed up and sure it was network-manager that was the culprit. I then used
 
