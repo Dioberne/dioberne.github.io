@@ -9,32 +9,31 @@ If you are doing this for real, host the Tor node wherever you are comfortable. 
 
 Step One: Update Everything
 
-{% highlight bash %}
+```
 sudo apt update && sudo apt upgrade
-{% endhighlight %}
+```
 
 You may need to throw a dist-upgrade in there as well if your kernel is held back. Updates are the easiest way to avoid vulnerabilities so for a production system, do not skip this step. 
 
 Step 2: Install Tor and Nginx
 
-{% highlight bash %}
+```
 sudo apt install tor nginx
-{% endhighlight %}
+```
 
 Step 3: Configure Nginx
 
 To help harden the hidden service add the line 
 
-{% highlight bash %}
+```
 server_tokens off;
-{% endhighlight %}
+```
 
 to /etc/nginx.conf inside of the http block. This will make it harder for automated scans (Nmap etc) to identify server and OS version. The rest of the default options can be left unless you want bells and whistles. 
 
 Open  up /etc/nginx/sites-available/default and replace the contents with 
 
-{% highlight bash %}
-
+```
 server {
             listen       127.0.0.1:8080;
             server_name  localhost;
@@ -43,22 +42,19 @@ server {
                 proxy_pass https://dioberne.github.io/;
             }
        }
-
-{% endhighlight %}
+```
 
 Except replace this site with your own. You can then test the configuration files using 
 
-{% highlight bash %}
+```
 sudo nginx -t
-{% endhighlight %}
+```
 
 Its error output is much better than when Nginx fails to load, so test the configuration files before reloading with 
 
-{% highlight bash %}
-
-server {
+```
 sudo service nginx restart
-{% endhighlight %}
+```
 
 If you have a GUI, or better yet know how to forward ports via SSH, you can test the proxy by browsing to  127.0.0.1:8080. If you see your site, then it worked!
 
@@ -67,24 +63,24 @@ Step 3: Configure Tor
 Edit /etc/tor/torrc, go to the middle and uncomment the lines for HiddenServiceDir and HiddenServicePort. Change the server port from 80 to 8080. The end result should be 
 
 
-{% highlight bash %}
+```
 HiddenServiceDir /var/lib/tor/hidden_service
 HiddenServicePort 80 127.0.0.1:8080
-{% endhighlight %}
+```
 
 Now we can restart tor using 
 
-{% highlight bash %}
+```
 sudo service tor restart
-{% endhighlight %}
+```
 
 Step 4: Test your new Hidden Service
 
 The command
 
-{% highlight bash %}
+```
 sudo cat /var/lib/tor/hidden_service/hostname
-{% endhighlight %}
+```
 
 will tell you the name of your service. Pop it open in a copy of the Tor Browser Bundle (Or Tails) and check to see if everything is working. 
 
