@@ -85,7 +85,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: bold;
   line-height: 1.25;
   color: #313131;
-  font-family: "Raleway", serif;
+  font-family: "Raleway", "Proxima Nova", "Roboto", sans-serif;
   text-rendering: optimizeLegibility;
 }
 h1 {
